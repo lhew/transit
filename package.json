@@ -1,0 +1,25 @@
+{
+  "name": "transit",
+  "version": "0.0.0",
+  "description": "Small lib to perform transitions between your pages or components",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhew/transit.git"
+  },
+  "keywords": [
+    "frontend",
+    "javascript",
+    "transitions",
+    "css"
+  ],
+  "author": "Leonardo Almeida",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhew/transit/issues"
+  },
+  "homepage": "https://github.com/lhew/transit#readme"
+}

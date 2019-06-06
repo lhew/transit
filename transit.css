@@ -1,0 +1,15 @@
+.transit {
+    height: 100%;
+    width: 100%;
+    transform: scale(0);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+  }
+
+  .transit.open {
+    transform: scale(1);
+  }

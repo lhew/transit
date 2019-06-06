@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./index.js"></script>
+    <style>
+        body,
+        html {
+            font: normal 1em sans-serif;
+            color: #ffffff;
+            background: black;
+            overflow: hidden;
+        }
+
+        .opening {
+            transition: all 0.4s;
+            height: 100%;
+            width: 100%;
+            background: darkslategray;
+            transform: scale(0);
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: 1em 1em;
+            left: 0;
+            top: 0;
+        }
+
+        .opening.open {
+            transform: scale(1);
+        }
+
+        .wow {
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(-5em);
+            font-size: 2em;
+            opacity: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wow.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #transit--overlap {
+            position: absolute;
+            border-radius: 100%;
+        }
+
+        button {
+            font-size: 16px;
+            border: none;
+            background: #da8782;
+            padding: 8px;
+            margin: 2em auto;
+            position: absolute;
+            left: 60%;
+            top: 79%;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Click me</button>
+
+    <br>
+
+    <div class="opening">
+        <div class="wow">
+            WOW, works <br>
+            <button>Ok put it back</button>
+
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var b1 = document.querySelectorAll('button')[0];
+            var b2 = document.querySelectorAll('button')[1];
+            var wow = document.querySelector('.wow');
+
+            var wowTransitionEvent = whichTransitionEvent(wow);
+            wow.addEventListener(wowTransitionEvent, function(event) {
+                event.stopPropagation();
+                return false;
+            });
+
+            var transit = new Transit(
+                document.querySelector(".opening"),
+                function (event) {
+                    wow.classList.toggle('show');
+                },
+                b1);
+
+
+            b1.onclick = (event) => transit.open(event);
+            b2.onclick = (event) => transit.close(event);
+        }
+    </script>
+</body>
+
+</html>
